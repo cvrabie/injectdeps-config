@@ -29,7 +29,7 @@ Assuming this is your `config/default.json`
 
 You can define your injected module like this
 
-```
+```javascript
 module.exports = require('injectdeps')(['app.db.host', 'app.db.port', 'app.db.debug'], function(host, port, debug){
   return `${host}:${port}:${debug}`;
 });
@@ -37,7 +37,7 @@ module.exports = require('injectdeps')(['app.db.host', 'app.db.port', 'app.db.de
 
 When you initialise your container also import the default binder module and load it into the container:
 
-```
+```javascript
 const container = injector.getContainer();
 const configLoader = require('injectdeps-config')(config, {});
 const db = configLoader(container)
@@ -47,7 +47,7 @@ const db = configLoader(container)
 
 or shorter:
 
-```
+```javascript
 require('injectdeps-config')(config, {})()
   .bindName('db').toObject(defaultDatabase)
   .newObject('db');
@@ -57,7 +57,7 @@ In the above example we don't provide a container to the loader, which means a n
 
 Various configuration options for the binder are described below. For this you should instantiate an `EagerBinder` instead of using `defaultEagerBinderModule`
 
-```
+```javascript
 const settings = {
   log: true,
   root: 'app',
@@ -71,21 +71,21 @@ require('injectdeps-config')(config, settings)();
 
 Use the `root` configuration parameter of the eager binder. This will only load children of this particular path. For our above example:
 
-```
+```javascript
 {
   root: 'app'
 };
 ```
 only loads the `app` breanch of the configuration. The keys necessary for injecting are also shortened.
 
-```
+```javascript
 require('injectdeps')(['db.host', 'db.port'], function(host, port){});
 ```
 
 ### Adding a prefix to the binding key
 
 In order to avoid collisions you can add a prefix to the binding keys. For our above example:
-```
+```javascript
 {
   root: 'app',
   prefix: 'cfg'
@@ -94,7 +94,7 @@ In order to avoid collisions you can add a prefix to the binding keys. For our a
 
 This makes correct biding:
 
-```
+```javascript
 require('injectdeps')(['cfg.db.host', 'cfg.db.port'], function(host, port){});
 ```
 
@@ -104,7 +104,7 @@ Note that there is no `cfg` key in the configuration json.
 
 In addition to binding every leaf entry of the configuration, you can also bind the intermediary object by turning on `objects` in the EagerBinder settings.
 
-```
+```javascript
 {
   root: 'app',
   objects: true
@@ -112,7 +112,7 @@ In addition to binding every leaf entry of the configuration, you can also bind 
 ```
 
 This will bind to constants `db.host`, `db.port`, `db.seeds` but also `db` as the constant object
-```
+```javascript
 {
   host: "localhost",
   port: 1234,
@@ -123,7 +123,7 @@ This will bind to constants `db.host`, `db.port`, `db.seeds` but also `db` as th
 ### Binding logs
 
 For debugging purposes, you can turn on binding logs
-```
+```javascript
 {
   log: true
 };
@@ -131,7 +131,7 @@ For debugging purposes, you can turn on binding logs
 
 This allows you to get an array of logs from the settings object after the binding is done.
 
-```
+```javascript
 console.log( settings.logs.join("\n") );
 ```
 
