@@ -1,0 +1,35 @@
+{
+  "name": "injectdeps-config",
+  "version": "1.0.0",
+  "description": "Module that binds configurations provided by node-config into an injectdeps container",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha '*.spec.js'",
+    "lint": "eslint '*.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cvrabie/injectdeps-config.git"
+  },
+  "keywords": [
+    "injectdeps",
+    "di",
+    "dependency-injection",
+    "node-config"
+  ],
+  "author": "Cristian Vrabie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cvrabie/injectdeps-config/issues"
+  },
+  "homepage": "https://github.com/cvrabie/injectdeps-config#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "config": "^1.25.1",
+    "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "injectdeps": "^1.2.0",
+    "node-config": "0.0.2"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "app": {
+    "db": {
+      "host": "localhost",
+      "port": 1234,
+      "seeds": ["8.8.8.8","8.8.4.4"],
+      "debug": true
+    }
+  }
+}
